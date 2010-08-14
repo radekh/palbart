@@ -1,0 +1,5 @@
+= Palbart
+An enhanced version of the PAL PDP8 assembler PALBART is an enhanced version of the pdp8 PAL assembler.  This is a PDP8 cross assembler.  Its useful for the users of SIMH or any other PDP8 emulator.  The original source code is available at: http://www.cs.uiowa.edu/~jones/pdp8/index.html  To quote that web page, "This enhancement was written by Gary Messenbrink to support BART's fleet of PDP-8 systems." 
+
+Links:
+* http://linux.about.com/cs/linux101/g/palbart.htm
