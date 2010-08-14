@@ -26,8 +26,8 @@
 #**********************************************************************
 
 PROG1  = palbart
-SRC1  = palbart-2.4.c
-OBJ1  = palbart-2.4.o
+SRC1  = palbart-2.5.c
+OBJ1  = palbart-2.5.o
 
 PROG2  = macro8x
 SRC2  = macro8x.c
@@ -138,15 +138,15 @@ install: install.$(PROG1) install.$(PROG2)
 
 install.$(PROG1):
 	$(MAKE) -f $(TOP)/Makefile program=$(PROG1) install_prog
-	
+
 install.$(PROG2):
 	$(MAKE) -f $(TOP)/Makefile program=$(PROG2) install_prog
-	
+
 install_prog: $(program)
 	@if [ -d $(BINDIR) ]; then set +x; \
 	else (set -x; $(MKDIRHIER) $(BINDIR)); fi
 	$(INSTALL) $(INSTALLFLAGS) $(program) $(BINDIR)
-	
+
 
 install.man: installman.$(PROG1) installman.$(PROG2)
 
@@ -158,7 +158,7 @@ installman.$(PROG2):
 
 install_man: $(manpage)
 	$(INSTALL) $(MANDIR).$(MANEXT) $(manpage)
-	
+
 
 emptyrule::
 
@@ -186,7 +186,7 @@ rpm.$(PROG1):
 
 rpm.$(PROG2):
 	$(MAKE) -f $(TOP)/Makefile program=$(PROG2) specfile=$(PROG2).spec rpm_program
-	
+
 rpm_program: $(specfile) $(program) rpm_dirs rpm_install
 	$(RM) $(rpm_rpms)/$(program)*.rpm
 	$(RPMBUILD) $(RPMFLAGS) $(specfile)
@@ -200,16 +200,16 @@ rpm_dirs:
 	@$(MKDIRHIER) $(rpm_specs)
 	@$(MKDIRHIER) $(rpm_srpms)
 	@$(MKDIRHIER) $(rpm_build)
-	
+
 rpm_install: $(program)
 	$(MKDIRHIER) $(rpm_buildroot)$(BINDIR)
 	$(INSTALL) $(INSTALLFLAGS) $(program) $(rpm_buildroot)$(BINDIR)
-	
+
 #----------------------------------------------------------------------
-		
+
 depend::
 	$(CCDEPEND) $(DEPENDFLAGS) $(INCLDIRS) $(SRCS) > .depend
-		
+
 #----------------------------------------------------------------------
 #
 # include a dependency file if one exists
